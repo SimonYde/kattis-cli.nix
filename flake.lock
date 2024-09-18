@@ -1,0 +1,61 @@
+{
+  "nodes": {
+    "kattis-cli": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1725122815,
+        "narHash": "sha256-Q/DqnY6+xO6kepsfH6y385HZNdz1AMwyW0SWU3QbLD4=",
+        "owner": "Kattis",
+        "repo": "kattis-cli",
+        "rev": "4fb228c5666215fcb26a1644e91cb2518db351e9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kattis",
+        "repo": "kattis-cli",
+        "type": "github"
+      }
+    },
+    "kattis-test": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1707836977,
+        "narHash": "sha256-h1RkuOOhb9RZYsD+DSnDH3CQj67Z9v4gi7SwzBvcfr4=",
+        "owner": "tyilo",
+        "repo": "kattis-test",
+        "rev": "89628b7202c4cc2f262deae080f831e229d784b9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tyilo",
+        "repo": "kattis-test",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1726463316,
+        "narHash": "sha256-gI9kkaH0ZjakJOKrdjaI/VbaMEo9qBbSUl93DnU7f4c=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "99dc8785f6a0adac95f5e2ab05cc2e1bf666d172",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "kattis-cli": "kattis-cli",
+        "kattis-test": "kattis-test",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
