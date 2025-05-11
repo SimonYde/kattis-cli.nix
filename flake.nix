@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
     kattis-cli = {
       url = "github:Kattis/kattis-cli";
       flake = false;
@@ -19,20 +20,25 @@
       nixpkgs,
       kattis-cli,
       kattis-test,
+      flake-utils,
     }:
-    let
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    in
-    {
-      packages = {
-        x86_64-linux.kattis-cli = pkgs.callPackage ./kattis-cli.nix {
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        packages.default = self.packages.${system}.kattis-cli;
+
+        packages.kattis-cli = pkgs.callPackage ./nix/kattis-cli.nix {
           inherit kattis-cli;
         };
-        x86_64-linux.kattis-test = pkgs.callPackage ./kattis-test.nix {
+
+        packages.kattis-test = pkgs.callPackage ./nix/kattis-test.nix {
           inherit kattis-test;
-          kattis-cli = self.packages.x86_64-linux.kattis-cli;
+          kattis-cli = self.packages.${system}.kattis-cli;
         };
-        x86_64-linux.default = self.packages.x86_64-linux.kattis-cli;
-      };
-    };
+      }
+    );
+
 }

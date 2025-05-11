@@ -1,13 +1,31 @@
 {
   "nodes": {
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "kattis-cli": {
       "flake": false,
       "locked": {
-        "lastModified": 1725122815,
-        "narHash": "sha256-Q/DqnY6+xO6kepsfH6y385HZNdz1AMwyW0SWU3QbLD4=",
+        "lastModified": 1744212772,
+        "narHash": "sha256-UNJBKNLTip3/6wdWA/OUwbtkIK99yo6ghLA0N/cYE6U=",
         "owner": "Kattis",
         "repo": "kattis-cli",
-        "rev": "4fb228c5666215fcb26a1644e91cb2518db351e9",
+        "rev": "e748f51b803bd783c24d3424905e4a335c0cb6dc",
         "type": "github"
       },
       "original": {
@@ -19,11 +37,11 @@
     "kattis-test": {
       "flake": false,
       "locked": {
-        "lastModified": 1707836977,
-        "narHash": "sha256-h1RkuOOhb9RZYsD+DSnDH3CQj67Z9v4gi7SwzBvcfr4=",
+        "lastModified": 1736432531,
+        "narHash": "sha256-gtPC80fV5+6wFqWobsARUgCRQhPSkZqckNYZaOKx2OE=",
         "owner": "tyilo",
         "repo": "kattis-test",
-        "rev": "89628b7202c4cc2f262deae080f831e229d784b9",
+        "rev": "2bc6c9b5d2a514214f51f02ae02a91dcfa9a9abc",
         "type": "github"
       },
       "original": {
@@ -34,11 +52,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1726463316,
-        "narHash": "sha256-gI9kkaH0ZjakJOKrdjaI/VbaMEo9qBbSUl93DnU7f4c=",
+        "lastModified": 1746663147,
+        "narHash": "sha256-Ua0drDHawlzNqJnclTJGf87dBmaO/tn7iZ+TCkTRpRc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "99dc8785f6a0adac95f5e2ab05cc2e1bf666d172",
+        "rev": "dda3dcd3fe03e991015e9a74b22d35950f264a54",
         "type": "github"
       },
       "original": {
@@ -50,9 +68,25 @@
     },
     "root": {
       "inputs": {
+        "flake-utils": "flake-utils",
         "kattis-cli": "kattis-cli",
         "kattis-test": "kattis-test",
         "nixpkgs": "nixpkgs"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
       }
     }
   },

@@ -1,28 +1,37 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
   python3,
   kattis-cli,
 }:
 let
-  python = python3.pkgs.python.withPackages (
-    ps: with ps; [
+  mkDate =
+    longDate:
+    (lib.concatStringsSep "-" [
+      (lib.substring 0 4 longDate)
+      (lib.substring 4 2 longDate)
+      (lib.substring 6 2 longDate)
+    ]);
+
+  version = mkDate (kattis-cli.lastModifiedDate or "19700101");
+
+  pythonWithDeps = python3.pkgs.python.withPackages (
+    pythonPkgs: with pythonPkgs; [
       requests
       lxml
     ]
   );
 in
 stdenv.mkDerivation {
+  inherit version;
   pname = "kattis-cli";
-  version = "unstable-2024-09-17";
-
   src = kattis-cli;
-  propagatedBuildInputs = [ python ];
+
+  propagatedBuildInputs = [ pythonWithDeps ];
 
   patchPhase = ''
     substituteInPlace ./submit.py \
-    --replace "#!/usr/bin/env python" "#!${python}/bin/python"
+    --replace "#!/usr/bin/env python" "#!${pythonWithDeps}/bin/python"
   '';
 
   installPhase = ''

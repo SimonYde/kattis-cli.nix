@@ -1,13 +1,22 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
   kattis-cli,
   kattis-test,
 }:
+let
+  mkDate =
+    longDate:
+    (lib.concatStringsSep "-" [
+      (lib.substring 0 4 longDate)
+      (lib.substring 4 2 longDate)
+      (lib.substring 6 2 longDate)
+    ]);
+  version = mkDate (kattis-test.lastModifiedDate or "19700101");
+in
 stdenv.mkDerivation {
+  inherit version;
   pname = "kattis-test";
-  version = "unstable-2024-09-18";
 
   src = kattis-test;
   propagatedBuildInputs = [ kattis-cli ];
@@ -16,7 +25,7 @@ stdenv.mkDerivation {
     substituteInPlace kattis-test \
       --replace '"rustup",' "" \
       --replace '"run",' "" \
-      --replace '"1.72.1",' ""
+      --replace '"1.83.0",' ""
   '';
 
   installPhase = ''
@@ -27,7 +36,6 @@ stdenv.mkDerivation {
   meta = with lib; {
     description = "Tool for running problem submissions against samples.";
     homepage = "https://github.com/tyilo/kattis-test";
-    maintainers = with maintainers; [ ];
     mainProgram = "kattis";
     platforms = platforms.all;
   };
